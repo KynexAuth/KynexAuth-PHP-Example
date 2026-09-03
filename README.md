@@ -1,11 +1,11 @@
-# 🛡️ KynexAuth PHP SDK & Integration Example
+# 🛡️ KynexAuth PHP SDK, CLI & Web Example
 
 [![PHP Version](https://img.shields.io/badge/PHP-7.4%20%7C%208.0%20%7C%208.1%20%7C%208.2%20%7C%208.3-777BB4.svg?logo=php&logoColor=white)](https://www.php.net/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://kynexauth.com)
 [![Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Native%20PHP)-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Official, zero-dependency PHP client library and CLI implementation for the **[KynexAuth](https://kynexauth.com)** security, authentication, and licensing API. 100% compatible with C#, C++, Python, and JavaScript SDK specifications.
+Official, zero-dependency PHP client library, CLI terminal application, and modern Web authentication portal for the **[KynexAuth](https://kynexauth.com)** security and licensing cloud API.
 
 ---
 
@@ -13,12 +13,20 @@ Official, zero-dependency PHP client library and CLI implementation for the **[K
 
 ```
 Php Example/
-├── 📄 kynexauth.php    # Core PHP SDK Client Library (Zero external dependencies)
-├── 📄 index.php        # Next-Gen Matrix Console Loader (CLI)
-├── 📄 run.bat          # 1-Click Console Launcher for Windows
-├── 📄 composer.json    # Composer manifest for autoloading
-├── 📄 .gitignore       # Standard git ignore file
-└── 📄 README.md        # Setup & Integration Documentation
+├── 📂 ConsoleExample/       # Next-Gen Futuristic CLI Terminal Application
+│   ├── 📄 kynexauth.php     # Core PHP SDK Client Library
+│   ├── 📄 index.php         # Matrix Card Terminal Loader
+│   └── 📄 run.bat           # 1-Click CLI Console Launcher for Windows
+│
+├── 📂 WebExample/           # Full-Featured Dark Glassmorphism Web Portal
+│   ├── 📄 kynexauth.php     # Core PHP SDK Client Library
+│   ├── 📄 index.php         # Glassmorphism Web Login Portal (Login, Register, Key, Upgrade)
+│   ├── 📄 dashboard.php     # Protected Member Dashboard with Micro-Animations
+│   └── 📄 start_web.bat     # 1-Click Local Web Server Launcher
+│
+├── 📄 composer.json         # Composer manifest for autoloading
+├── 📄 .gitignore            # Standard git ignore file
+└── 📄 README.md             # Integration Documentation
 ```
 
 ---
@@ -54,54 +62,43 @@ $KynexAuthApp = new \KynexAuth\Api(
 
 ---
 
-## 🖥️ Running the CLI Console Example
+## 🖥️ Option A: Running the CLI Console Example
 
-1. Open your terminal in the `Php Example` directory:
+1. Navigate to the `ConsoleExample/` directory:
    ```bash
-   cd "Php Example"
+   cd "Php Example/ConsoleExample"
    ```
-2. Start the interactive console loader:
+2. Run directly:
    ```bash
    php index.php
+   # or double-click run.bat on Windows
    ```
 3. **Features:**
-   * Modern transparent ANSI styling with rotating braille loading animation.
+   * Matrix/Card HUD layout with rotating braille loading animation.
    * `[1] LOGIN` — Authenticate using username and password.
    * `[2] REGISTER` — Create a new account with a license key.
    * `[3] UPGRADE` — Extend an existing user's subscription.
-   * `[4] LICENSE` — Instant fast-access via license key.
+   * `[4] LICENSE KEY` — Instant fast-access via license key.
    * Automatic **Windows User SID** (`S-1-5-21-...`) hardware ID detection.
-   * Expiration date and time conversion with subscription status indicator.
+   * Real public IPv4 resolution.
 
 ---
 
-## 🌐 Web Integration Example (PHP Web Apps)
+## 🌐 Option B: Running the Web Portal Example
 
-To protect any PHP web page or admin dashboard:
-
-```php
-<?php
-session_start();
-require_once __DIR__ . '/kynexauth.php';
-
-$KynexAuthApp = new \KynexAuth\Api("YOUR_APP_NAME", "YOUR_APP_KEY", "1.0");
-$KynexAuthApp->init();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    if ($KynexAuthApp->login($username, $password)) {
-        $_SESSION['authenticated'] = true;
-        $_SESSION['user'] = $KynexAuthApp->user_data->username;
-        header('Location: /dashboard.php');
-        exit;
-    } else {
-        $error = $KynexAuthApp->response->message;
-    }
-}
-?>
-```
+1. Navigate to the `WebExample/` directory:
+   ```bash
+   cd "Php Example/WebExample"
+   ```
+2. Start the web server:
+   * Double-click **`start_web.bat`** on Windows (automatically launches web server and opens browser at `http://localhost:8000/index.php`).
+   * Or run manually:
+     ```bash
+     php -S localhost:8000
+     ```
+3. **Features:**
+   * Modern **Dark Glassmorphism UI** with multi-tab interface (Login, Register, License Key, Upgrade).
+   * **`dashboard.php`** protected user area with live pulse radar, gold VIP subscription badges, real IP telemetry, and session management.
 
 ---
 
