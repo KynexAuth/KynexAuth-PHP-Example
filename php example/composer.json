@@ -1,0 +1,24 @@
+{
+  "name": "kynexauth/kynexauth-php",
+  "description": "Official PHP SDK and Authentication Client for KynexAuth",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "KynexAuth Team"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "ext-json": "*",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "KynexAuth\\": "src/"
+    },
+    "files": [
+      "kynexauth.php"
+    ]
+  }
+}
